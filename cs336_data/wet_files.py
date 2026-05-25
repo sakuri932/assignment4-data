@@ -56,7 +56,7 @@ class _EnglishWetFile(Furu[Path]):
                         if rec.rec_type != "conversion":
                             writer.write_record(rec)
                             continue
-                        payload = rec.content_stream().read()
+                        payload = rec.reader.read()
                         text = payload.decode("utf-8", errors="replace")
                         total_text += len(text)
 
