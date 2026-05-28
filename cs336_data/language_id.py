@@ -36,7 +36,7 @@ _LANG_REMAP: dict[str, str] = {
 
 @functools.lru_cache(maxsize=1)
 def _load_model() -> fasttext.FastText._FastText:
-    """懒加载语言识别模型（全局只加载一次，后续调用直接返回缓存）。"""
+    """懒加载语言识别模型（全局只加载一次，后续调用直接返回缓存）。这里加载的是 fastText 的 lid.176.bin 模型，支持 176 种语言的识别。"""
     model_path = get_shared_assets_path() / "classifiers" / "lid.176.bin"
     if not model_path.exists():
         raise FileNotFoundError(
